@@ -15,8 +15,10 @@
         imports = [ inputs.pkgs-by-name-for-flake-parts.flakeModule ];
         systems = lib.systems.flakeExposed;
 
-        perSystem = {
+        perSystem = { self', ... }: {
           pkgsDirectory = ./pkgs;
+
+          packages.default = self'.packages.flux-schema;
         };
       }
     );
